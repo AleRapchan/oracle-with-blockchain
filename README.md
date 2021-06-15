@@ -22,14 +22,14 @@ Important: You can never fully trust off-chain data!
 
 ```js
 /// quote structure
-        struct stock {
-uint price;
-            uint volume;
-        }
-        /// quotes by symbol
-        mapping( bytes4 => stock) stockQuote;
-        /// Contract owner
-        address oracleOwner;
+struct stock {
+  uint price;
+  uint volume;
+}
+/// quotes by symbol
+mapping( bytes4 => stock) stockQuote;
+/// Contract owner
+address oracleOwner;
 ```
 
 - Create functions
