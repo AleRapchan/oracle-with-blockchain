@@ -20,7 +20,7 @@ Important: You can never fully trust off-chain data!
 - Use Remix and Metamask
 - Create state data
 
-```bash
+```js
 /// quote structure
         struct stock {
 uint price;
@@ -34,7 +34,7 @@ uint price;
 
 - Create functions
 
-```bash
+```js
 /// Set the value of a stock
 function setStock(bytes4 symbol, uint price, uint volume) public {...}
 /// Get the value of a stock
@@ -62,13 +62,15 @@ npm start
 
 - Register for your free access to REST call: https://www.alphavantage.co/
 
-```bash
-fetch('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=KEY')
-    .then(res => res.json())
-    .then((data) => {
-      this.setState({ quote: data["Global Quote"] })
-    })
-    .catch(console.log)
+```js
+fetch(
+  "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=KEY"
+)
+  .then((res) => res.json())
+  .then((data) => {
+    this.setState({ quote: data["Global Quote"] });
+  })
+  .catch(console.log);
 ```
 
 ## Oracle React App
@@ -89,22 +91,27 @@ npm install web3
 - Get a copy of your ABI and contract address from remix
 - Put them in a file that we can use lie src/quotecontract.js
 
-```bash
+```js
 export const STOCK_ORACLE_ADDRESS = '0x0YOURADDRESS'
 export const STOCK_ORACLE_ABI = [ ... YOUR ABI ... ]
 ```
 
 ## Import in the stuff we need to connect
 
-```bash
-import Web3 from 'web3';
-import { STOCK_ORACLE_ABI, STOCK_ORACLE_ADDRESS } from './quotecontract'
+```js
+import Web3 from "web3";
+import { STOCK_ORACLE_ABI, STOCK_ORACLE_ADDRESS } from "./quotecontract";
 
-const web3 = new Web3("http://localhost:7545")
-const accounts = await web3.eth.getAccounts()
-console.log("Account 0 = ", accounts[0] )
-const stockQuote = new web3.eth.Contract(STOCK_ORACLE_ABI, STOCK_ORACLE_ADDRESS)
-var retval = await stockQuote.methods.getStockPrice(web3.utils.fromAscii("AAAA")).call();
+const web3 = new Web3("http://localhost:7545");
+const accounts = await web3.eth.getAccounts();
+console.log("Account 0 = ", accounts[0]);
+const stockQuote = new web3.eth.Contract(
+  STOCK_ORACLE_ABI,
+  STOCK_ORACLE_ADDRESS
+);
+var retval = await stockQuote.methods
+  .getStockPrice(web3.utils.fromAscii("AAAA"))
+  .call();
 console.log(retval);
 ```
 
