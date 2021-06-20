@@ -1,8 +1,8 @@
-![Logo](https://ipfs.io/ipfs/QmXjNaqAtTcaSCNgqnTRDjiQqewtXPDEdaRH97Nbuuruy1?filename=oracle-with-blockchain.png)
-
 # Oracle with Blockchain
 
 Smart contracts can only work with data on the blockchain but in reality you will have cases where you need to make your contract use off-chain data. This application will put the data into a smart contract that can access the oracle smart contract to access the off-chain data.
+
+![Logo](https://ipfs.io/ipfs/QmXjNaqAtTcaSCNgqnTRDjiQqewtXPDEdaRH97Nbuuruy1?filename=oracle-with-blockchain.png)
 
 Important: You can never fully trust off-chain data!
 
